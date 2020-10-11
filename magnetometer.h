@@ -22,7 +22,8 @@ private slots:
     QVector<int> get_xyzt_values(long long x28_reg, long long x29_reg);
     QVector<int> decimal_to_binary(long long decimal);
     int binary_to_decimal(QVector<int> binary);
-    QVector<QVector<int>> get_xyz_bin(QVector<int> x28_reg_bin, QVector<int> x29_reg_bin);
+    QVector<QVector<int>> get_xyzt_bin(QVector<int> x28_reg_bin, QVector<int> x29_reg_bin);
+    QVector<float> calculate_actual_values(QVector<int> xyzt_from_reg);
 
 private:
     Ui::Magnetometer *ui;
