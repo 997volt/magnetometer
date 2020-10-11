@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>298</width>
-    <height>212</height>
+    <height>240</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,6 +15,20 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="z_lineEdit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="x_label">
+      <property name="text">
+       <string>x decimal value:</string>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="1">
      <widget class="QLineEdit" name="x29_input_lineEdit"/>
     </item>
@@ -22,6 +36,13 @@
      <widget class="QLabel" name="x29_label">
       <property name="text">
        <string>0x29 decimal value:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="z_label">
+      <property name="text">
+       <string>z decimal value:</string>
       </property>
      </widget>
     </item>
@@ -42,6 +63,13 @@
       </property>
      </widget>
     </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="y_label">
+      <property name="text">
+       <string>y decimal value:</string>
+      </property>
+     </widget>
+    </item>
     <item row="3" column="1">
      <widget class="QLineEdit" name="x_lineEdit">
       <property name="enabled">
@@ -56,31 +84,17 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
-     <widget class="QLineEdit" name="z_lineEdit">
+    <item row="6" column="0">
+     <widget class="QLabel" name="temp_label">
+      <property name="text">
+       <string>Temperature</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="temp_lineEdit">
       <property name="enabled">
        <bool>false</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="x_label">
-      <property name="text">
-       <string>x decimal value:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="y_label">
-      <property name="text">
-       <string>y decimal value:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="z_label">
-      <property name="text">
-       <string>z decimal value:</string>
       </property>
      </widget>
     </item>

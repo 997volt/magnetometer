@@ -19,7 +19,7 @@ public:
 
 private slots:
     void on_calculate_pushButton_clicked();
-    QVector<int> get_xyz_values(long long x28_reg, long long x29_reg);
+    QVector<int> get_xyzt_values(long long x28_reg, long long x29_reg);
     QVector<int> decimal_to_binary(long long decimal);
     int binary_to_decimal(QVector<int> binary);
     QVector<QVector<int>> get_xyz_bin(QVector<int> x28_reg_bin, QVector<int> x29_reg_bin);
