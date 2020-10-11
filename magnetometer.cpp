@@ -25,12 +25,16 @@ void Magnetometer::on_calculate_pushButton_clicked()
 QVector<int> Magnetometer::get_xyz_values(long long x28_reg, long long x29_reg)
 {
     // index 0 for LSB in all binary vectors
-    QVector<int> xyz_values(3, 0), x28_reg_bin = decimal_to_binary(x28_reg), x29_reg_bin = decimal_to_binary(x29_reg);
-    QVector<QVector<int>> xyz_bin = get_xyz_bin(x28_reg_bin, x29_reg_bin);
-
-    for (int i = 0; i < 3 ; i++)
+    QVector<int> xyz_values(3, 0);
+    if(x28_reg < 8589934592 && x29_reg < 8589934592 && x28_reg >= 0 && x29_reg >= 0)
     {
-        xyz_values[i] = binary_to_decimal(xyz_bin[i]);
+        QVector<int> x28_reg_bin = decimal_to_binary(x28_reg), x29_reg_bin = decimal_to_binary(x29_reg);
+        QVector<QVector<int>> xyz_bin = get_xyz_bin(x28_reg_bin, x29_reg_bin);
+
+        for (int i = 0; i < 3 ; i++)
+        {
+            xyz_values[i] = binary_to_decimal(xyz_bin[i]);
+        }
     }
 
     return xyz_values;
@@ -49,13 +53,25 @@ QVector<int> Magnetometer::decimal_to_binary(long long decimal)
     return binary;
 }
 
+///valid  for positive or nagative binary numbers
 int Magnetometer::binary_to_decimal(QVector<int> binary)
 {
     int decimal = 0;
 
-    for (int i = 0; i < binary.length() ; i++)
+    if(binary[binary.length()-1] == 0)
     {
-        decimal += binary[i] * pow(2,i);
+        for (int i = 0; i < binary.length() ; i++)
+        {
+            decimal += binary[i] * pow(2,i);
+        }
+    }
+    else
+    {
+        decimal--;
+        for (int i = 0; i < binary.length()-1 ; i++)
+        {
+            decimal += (binary[i]-1) * pow(2,i);
+        }
     }
 
     return decimal;
@@ -68,15 +84,15 @@ QVector<QVector<int>> Magnetometer::get_xyz_bin(QVector<int> x28_reg_bin, QVecto
 
     for(int i = 0; i < 4; i++)
     {
-        xyz_bin[0][i] = x29_reg_bin[i+8];
+        xyz_bin[2][i] = x29_reg_bin[i+8];
         xyz_bin[1][i] = x29_reg_bin[i+12];
-        xyz_bin[2][i] = x29_reg_bin[i+16];
+        xyz_bin[0][i] = x29_reg_bin[i+16];
     }
     for(int i = 0; i < 8; i++)
     {
-        xyz_bin[0][i+4] = x28_reg_bin[i+8];
+        xyz_bin[2][i+4] = x28_reg_bin[i+8];
         xyz_bin[1][i+4] = x28_reg_bin[i+16];
-        xyz_bin[2][i+4] = x28_reg_bin[i+24];
+        xyz_bin[0][i+4] = x28_reg_bin[i+24];
     }
 
     return xyz_bin;
